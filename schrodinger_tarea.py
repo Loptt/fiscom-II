@@ -123,6 +123,6 @@ def Imagesc_graph_handler(x, T):
 
 
 
-animation_handler(x, T)
+#animation_handler(x, T)
 #ThreeD_graph_handler(x, T)
-#Imagesc_graph_handler(x, T)
+Imagesc_graph_handler(x, T)
