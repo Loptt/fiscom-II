@@ -43,11 +43,18 @@ def generate_potencial_barrera(p, x_1, x_2):
 
     return v
 
-def generate_potencial_oscilador(p):
-    
-    pass
+def generate_potencial_oscilador(p, x, x0):
+    v = np.array(12 * p * np.square(x - x0))
+    return v
 
-v = generate_potencial_barrera((-1) *(10**6), x_1=0.6, x_2=1)
+def generate_potencial_lineal(p, x):
+    v = np.array(p * x)
+    return v
+
+
+#v = generate_potencial_barrera((-1) *(10**6), x_1=0.6, x_2=1)
+#v = generate_potencial_lineal(10, x)
+v = generate_potencial_oscilador(10, x, x0)
 
 print(v)
 
@@ -107,6 +114,6 @@ def Imagesc_graph_handler(x, T):
 
 
 
-#animation_handler(x, T)
+animation_handler(x, T)
 #ThreeD_graph_handler(x, T)
-Imagesc_graph_handler(x, T)
+#Imagesc_graph_handler(x, T)
