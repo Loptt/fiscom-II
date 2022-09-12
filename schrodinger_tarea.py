@@ -51,10 +51,19 @@ def generate_potencial_lineal(p, x):
     v = np.array(p * x)
     return v
 
+# Como usar el potencial correcto para cada inciso:
+#
+# Para los incisos del 3 al 7 descomentar la primera linea e introducir los valores
+# correspondientes a la llamada a la funcion para que se cree la barrera en el rango
+# correcto
+#
+# Para el inciso 8 descomentar la segunda linea
+#
+# Para el inciso 9 descomentar la tercera linea
 
 #v = generate_potencial_barrera((-1) *(10**6), x_1=0.6, x_2=1)
-#v = generate_potencial_lineal(10, x)
 v = generate_potencial_oscilador(10, x, x0)
+#v = generate_potencial_lineal(10, x)
 
 print(v)
 
@@ -114,6 +123,6 @@ def Imagesc_graph_handler(x, T):
 
 
 
-animation_handler(x, T)
+#animation_handler(x, T)
 #ThreeD_graph_handler(x, T)
-#Imagesc_graph_handler(x, T)
+Imagesc_graph_handler(x, T)
