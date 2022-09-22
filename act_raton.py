@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 prob_matrix = np.array([
   [1/2,1/2,0,0,0,0,0,0,0],
@@ -11,6 +12,8 @@ prob_matrix = np.array([
   [0,0,0,0,0,0,1/3,1/3,1/3],
   [0,0,0,0,0,0,0,1/2,1/2]
 ])
+
+prob_density = np.array([1,0,0,0,0,0,0,0,0])
 
 n_states = 9
 n_ratones = 100
@@ -30,15 +33,27 @@ def get_choice(raton):
   return choice
 
 def run_n_steps(steps):
+  global prob_density
   ratones = setup_ratones()
 
   for i in range(n_pasos):
+    prob_density = np.matmul(prob_density, prob_matrix)
     for j in range(n_ratones):
-      if ratones[j] == final_state:
-        continue
       ratones[j] = get_choice(ratones[j]) 
 
-  print(ratones)
+  #print(ratones)
+  #print(prob_density)
+  #print("SUM: ", np.sum(prob_density))
+
+  plt.subplot(2,1,1)
+  plt.title("Distribucion de ratones a 100 pasos")
+  plt.hist(ratones, bins=9)
+
+  plt.subplot(2,1,2)
+  plt.title("PDF despues de 100 pasos")
+  plt.bar(x=[i*0.8 for i in range(9)], height=prob_density, align='edge')
+
+  plt.show()
 
 def run_indefinitely():
   ratones = setup_ratones()
@@ -60,5 +75,9 @@ def run_indefinitely():
   print(ratones)
   print(total_steps)
 
-#run_n_steps(n_pasos)
-run_indefinitely()
+  plt.hist(total_steps, bins=10)
+  plt.title("Histograma de pasos")
+  plt.show()
+
+run_n_steps(n_pasos)
+#run_indefinitely()
